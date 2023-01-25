@@ -1,12 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Configuration;
-using Microsoft.IdentityModel.Tokens;
+﻿using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Net;
 using System.Security.Claims;
 using System.Security.Cryptography;
 using WeatherAPI.Domain.Dto;
 using WeatherAPI.Domain.Model;
+
+
 
 namespace WeatherAPI.Domain.Core.Service
 {
@@ -99,7 +99,7 @@ namespace WeatherAPI.Domain.Core.Service
                 HttpOnly = true,
                 Expires = newRefreshToken.Expires
             };
-            Response.Cookies.Append("refreshToken", newRefreshToken.Token, cookieOptions);
+            //Response.Cookies.Append("refreshToken", newRefreshToken.Token, cookieOptions);
             foreach (var user in _users)
             {
                 user.RefreshToken = newRefreshToken.Token;

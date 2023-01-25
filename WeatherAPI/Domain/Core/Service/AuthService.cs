@@ -38,6 +38,27 @@ namespace WeatherAPI.Domain.Core.Service
                 Email = request.Email,
                 PasswordHash = passwordHash,
                 PasswordSalt = passwordSalt,
+                Role = UserRole.Customer
+            };
+            _users.Add(user);
+            return ResponseDto<User>.Success("Registration is successful", user, (int)HttpStatusCode.OK);
+        }
+        public async Task<ResponseDto<User>> RegisterAdmin(UserDto request)
+        {
+            var checkIfEmailAlreadyExist = _users.Where(u => u.Email == request.Email).FirstOrDefault();
+            if (checkIfEmailAlreadyExist is not null)
+            {
+                return ResponseDto<User>.Fail("Email already exist", (int)HttpStatusCode.BadRequest);
+            }
+
+            CreatePasswordHash(request.Password, out byte[] passwordHash, out byte[] passwordSalt);
+            var user = new User
+            {
+                Id = Guid.NewGuid(),
+                Email = request.Email,
+                PasswordHash = passwordHash,
+                PasswordSalt = passwordSalt,
+                Role = UserRole.Admin
             };
             _users.Add(user);
             return ResponseDto<User>.Success("Registration is successful", user, (int)HttpStatusCode.OK);
@@ -55,7 +76,7 @@ namespace WeatherAPI.Domain.Core.Service
                 return ResponseDto<string>.Fail("Wrong password", (int)HttpStatusCode.BadRequest);
             }
 
-            string token = CreateToken(user);
+            string token = CreateToken(user, user.Role.ToString());
 
             var refreshToken = GenerateRefreshToken();
             SetRefreshToken(refreshToken);
@@ -75,13 +96,13 @@ namespace WeatherAPI.Domain.Core.Service
                 return ResponseDto<string>.Fail("Token expired.", (int)HttpStatusCode.Unauthorized);
             }
 
-            string token = CreateToken(user, UserRole.Admin.ToString());
+            string token = CreateToken(user, user.Role.ToString());
             var newRefreshToken = GenerateRefreshToken();
             SetRefreshToken(newRefreshToken);
             return ResponseDto<string>.Success("Token successfully refreshed.", token, (int)HttpStatusCode.OK);
         }
 
-        private string CreateToken(User user,string role)
+        private string CreateToken(User user, string role)
         {
             List<Claim> claims = new List<Claim>
             {

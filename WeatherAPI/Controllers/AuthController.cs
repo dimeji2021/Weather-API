@@ -22,6 +22,13 @@ namespace WeatherAPI.Controllers
         {
             return Ok(await _authService.Register(request));
         }
+        [HttpPost("Register_Admin")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public async Task<IActionResult> RegisterAdmin(UserDto request)
+        {
+            return Ok(await _authService.RegisterAdmin(request));
+        }
         [HttpPost("Login")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]

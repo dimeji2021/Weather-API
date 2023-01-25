@@ -1,4 +1,5 @@
-﻿using WeatherAPI.Domain.Enum;
+﻿using System.ComponentModel.DataAnnotations;
+using WeatherAPI.Domain.Enum;
 
 namespace WeatherAPI.Domain.Model
 {

@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.32804.182
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WeatherAPI", "WeatherAPI\WeatherAPI.csproj", "{A549658E-F65C-48FD-A9D6-11ED0036EA0E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WeatherAPI", "WeatherAPI\WeatherAPI.csproj", "{A549658E-F65C-48FD-A9D6-11ED0036EA0E}"
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{DA3867D7-9417-4895-B8C3-9C52D5CAD0A2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{A549658E-F65C-48FD-A9D6-11ED0036EA0E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A549658E-F65C-48FD-A9D6-11ED0036EA0E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A549658E-F65C-48FD-A9D6-11ED0036EA0E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DA3867D7-9417-4895-B8C3-9C52D5CAD0A2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DA3867D7-9417-4895-B8C3-9C52D5CAD0A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DA3867D7-9417-4895-B8C3-9C52D5CAD0A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DA3867D7-9417-4895-B8C3-9C52D5CAD0A2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

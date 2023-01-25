@@ -5,6 +5,7 @@ using System.Net;
 using System.Security.Claims;
 using System.Security.Cryptography;
 using WeatherAPI.Domain.Dto;
+using WeatherAPI.Domain.Enum;
 using WeatherAPI.Domain.Model;
 
 
@@ -63,7 +64,7 @@ namespace WeatherAPI.Domain.Core.Service
         }
         public async Task<ResponseDto<string>> RefreshToken()
         {
-            var refreshToken = _httpContextAccessor.HttpContext.Request.Cookies["refreshToken"];
+            var refreshToken = _httpContextAccessor?.HttpContext?.Request.Cookies["refreshToken"];
             var user = _users.FirstOrDefault(u => u.RefreshToken.Equals(refreshToken));
             if (user is null)
             {
@@ -74,18 +75,18 @@ namespace WeatherAPI.Domain.Core.Service
                 return ResponseDto<string>.Fail("Token expired.", (int)HttpStatusCode.Unauthorized);
             }
 
-            string token = CreateToken(user);
+            string token = CreateToken(user, UserRole.Admin.ToString());
             var newRefreshToken = GenerateRefreshToken();
             SetRefreshToken(newRefreshToken);
             return ResponseDto<string>.Success("Token successfully refreshed.", token, (int)HttpStatusCode.OK);
         }
 
-        private string CreateToken(User user)
+        private string CreateToken(User user,string role)
         {
             List<Claim> claims = new List<Claim>
             {
                 new Claim(ClaimTypes.Name, user.Email),
-                new Claim(ClaimTypes.Role, "Admin")
+                new Claim(ClaimTypes.Role, role)
             };
 
             var key = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes(

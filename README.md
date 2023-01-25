@@ -51,7 +51,6 @@ WeatherAPI is a RESTful API that uses JWT authentication and authorization The A
 
 - C#
 - ASP.NET Core
-- React js
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 

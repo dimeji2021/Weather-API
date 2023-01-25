@@ -7,5 +7,6 @@ namespace WeatherAPI.Domain.Core.Service
     {
         Task<ResponseDto<string>> Login(UserDto request);
         Task<ResponseDto<User>> Register(UserDto request);
+        Task<ResponseDto<string>> RefreshToken();
     }
 }

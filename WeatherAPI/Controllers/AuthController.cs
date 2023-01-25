@@ -30,5 +30,12 @@ namespace WeatherAPI.Controllers
         {
             return Ok(await _authService.Login(request));
         }
+        [HttpPost("RefreshToken")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        public async Task<IActionResult> RefreshToken()
+        {
+            return Ok(await _authService.RefreshToken());
+        }
     }
 }

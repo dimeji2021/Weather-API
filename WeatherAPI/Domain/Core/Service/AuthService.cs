@@ -1,4 +1,5 @@
-﻿using Microsoft.IdentityModel.Tokens;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Net;
 using System.Security.Claims;
@@ -13,11 +14,13 @@ namespace WeatherAPI.Domain.Core.Service
     public class AuthService : IAuthService
     {
         private readonly IConfiguration _configuration;
+        private readonly IHttpContextAccessor _httpContextAccessor;
         private static List<User> _users = new List<User>();
 
-        public AuthService(IConfiguration configuration)
+        public AuthService(IConfiguration configuration, IHttpContextAccessor httpContextAccessor)
         {
             _configuration = configuration;
+            _httpContextAccessor = httpContextAccessor ?? throw new ArgumentNullException(nameof(httpContextAccessor));
         }
         public async Task<ResponseDto<User>> Register(UserDto request)
         {
@@ -53,11 +56,30 @@ namespace WeatherAPI.Domain.Core.Service
 
             string token = CreateToken(user);
 
-            //var refreshToken = GenerateRefreshToken();
-            //SetRefreshToken(refreshToken);
+            var refreshToken = GenerateRefreshToken();
+            SetRefreshToken(refreshToken);
 
             return ResponseDto<string>.Success("Login is successful", token, (int)HttpStatusCode.OK);
         }
+        public async Task<ResponseDto<string>> RefreshToken()
+        {
+            var refreshToken = _httpContextAccessor.HttpContext.Request.Cookies["refreshToken"];
+            var user = _users.FirstOrDefault(u => u.RefreshToken.Equals(refreshToken));
+            if (user is null)
+            {
+                return ResponseDto<string>.Fail("Invalid Refresh Token.", (int)HttpStatusCode.Unauthorized);
+            }
+            else if (user.TokenExpires < DateTime.Now)
+            {
+                return ResponseDto<string>.Fail("Token expired.", (int)HttpStatusCode.Unauthorized);
+            }
+
+            string token = CreateToken(user);
+            var newRefreshToken = GenerateRefreshToken();
+            SetRefreshToken(newRefreshToken);
+            return ResponseDto<string>.Success("Token successfully refreshed.", token, (int)HttpStatusCode.OK);
+        }
+
         private string CreateToken(User user)
         {
             List<Claim> claims = new List<Claim>
@@ -99,14 +121,14 @@ namespace WeatherAPI.Domain.Core.Service
                 HttpOnly = true,
                 Expires = newRefreshToken.Expires
             };
-            //Response.Cookies.Append("refreshToken", newRefreshToken.Token, cookieOptions);
-            foreach (var user in _users)
+            _httpContextAccessor?.HttpContext?.Response.Cookies.Append("refreshToken", newRefreshToken.Token, cookieOptions);
+            _users.Select(user =>
             {
                 user.RefreshToken = newRefreshToken.Token;
                 user.TokenCreated = newRefreshToken.Created;
                 user.TokenExpires = newRefreshToken.Expires;
-
-            }
+                return user;
+            }).ToList();
         }
         private void CreatePasswordHash(string password, out byte[] passwordHash, out byte[] passwordSalt)
         {

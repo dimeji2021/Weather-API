@@ -3,7 +3,7 @@
   <PropertyGroup Label="Globals">
     <ProjectVersion>2.1</ProjectVersion>
     <DockerTargetOS>Linux</DockerTargetOS>
-    <ProjectGuid>da3867d7-9417-4895-b8c3-9c52d5cad0a2</ProjectGuid>
+    <ProjectGuid>76a1f69f-a30d-4f1f-8ce9-a14d154a47f9</ProjectGuid>
     <DockerLaunchAction>LaunchBrowser</DockerLaunchAction>
     <DockerServiceUrl>{Scheme}://localhost:{ServicePort}/swagger</DockerServiceUrl>
     <DockerServiceName>weatherapi</DockerServiceName>

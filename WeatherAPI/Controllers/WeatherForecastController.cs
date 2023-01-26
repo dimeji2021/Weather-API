@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using WeatherAPI.Domain.Model;
+using Swashbuckle.AspNetCore.Annotations;
 using WeatherAPI.infrastructure.Repository;
 
 namespace WeatherAPI.Controllers
@@ -19,6 +19,7 @@ namespace WeatherAPI.Controllers
         }
 
         [HttpGet(Name = "GetWeatherForecast"), Authorize(Roles = "Admin")]
+        [SwaggerOperation(Summary = "Accessible only by an Admin", Description ="Return the weathernreport of specified location")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status401Unauthorized)]

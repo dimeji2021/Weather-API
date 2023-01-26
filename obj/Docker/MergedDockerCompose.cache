@@ -1,8 +1,8 @@
-name: dockercompose11300303353467173024
+name: dockercompose15999510329900842926
 services:
   weatherapi:
     build:
-      context: C:\Users\hp\Desktop\IGate\WeatherAPI
+      context: C:\Users\Kehinde Aregbesola\Desktop\interview questions and answers\Weather-API
       dockerfile: WeatherAPI/Dockerfile
     environment:
       ASPNETCORE_ENVIRONMENT: Development
@@ -19,17 +19,17 @@ services:
       protocol: tcp
     volumes:
     - type: bind
-      source: C:\Users\hp\AppData\Roaming/Microsoft/UserSecrets
+      source: C:\Users\Kehinde Aregbesola\AppData\Roaming/Microsoft/UserSecrets
       target: /root/.microsoft/usersecrets
       read_only: true
       bind:
         create_host_path: true
     - type: bind
-      source: C:\Users\hp\AppData\Roaming/ASP.NET/Https
+      source: C:\Users\Kehinde Aregbesola\AppData\Roaming/ASP.NET/Https
       target: /root/.aspnet/https
       read_only: true
       bind:
         create_host_path: true
 networks:
   default:
-    name: dockercompose11300303353467173024_default
+    name: dockercompose15999510329900842926_default

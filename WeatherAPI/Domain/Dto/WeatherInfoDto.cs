@@ -10,6 +10,7 @@
         public string Icon { get; set; }
         public string Sunrise { get; set; }
         public string Sunset { get; set; }
-
+        public decimal lon { get; set; }
+        public decimal lat { get; set; }
     }
 }

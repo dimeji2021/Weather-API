@@ -32,6 +32,8 @@
                 var weather = JsonConvert.DeserializeObject<root>(json);
                 var weatherdto = new WeatherInfoDto()
                 {
+                    lon = weather.coord.lon, 
+                    lat = weather.coord.lat,
                     Temperature = weather.main.temp,
                     Summary = weather.weather[0].main,
                     Details = weather.weather[0].description,

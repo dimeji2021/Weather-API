@@ -4,11 +4,9 @@ namespace WeatherAPI.Domain.Model
     {
         public class coord
         {
-            public string? main { get; set; }
+            public decimal lon { get; set; }
 
-            public string? description { get; set; }
-
-            public string? icon { get; set; }
+            public decimal lat { get; set; }
         }
         public class weather
         {

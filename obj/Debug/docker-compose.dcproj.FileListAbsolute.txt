@@ -25,3 +25,31 @@ C:\Users\hp\Desktop\IGate\WeatherAPI\bin\Debug\WeatherAPI.pdb
 C:\Users\hp\Desktop\IGate\WeatherAPI\obj\Debug\docker-compose.dcproj.AssemblyReference.cache
 C:\Users\hp\Desktop\IGate\WeatherAPI\obj\Debug\docker-compose.dcproj.CoreCompileInputs.cache
 C:\Users\hp\Desktop\IGate\WeatherAPI\obj\Debug\docker-compose.dcproj.CopyComplete
+C:\Users\Kehinde Aregbesola\Desktop\interview questions and answers\Weather-API\bin\Debug\appsettings.Development.json
+C:\Users\Kehinde Aregbesola\Desktop\interview questions and answers\Weather-API\bin\Debug\appsettings.json
+C:\Users\Kehinde Aregbesola\Desktop\interview questions and answers\Weather-API\bin\Debug\WeatherAPI.deps.json
+C:\Users\Kehinde Aregbesola\Desktop\interview questions and answers\Weather-API\bin\Debug\WeatherAPI.runtimeconfig.json
+C:\Users\Kehinde Aregbesola\Desktop\interview questions and answers\Weather-API\bin\Debug\WeatherAPI.exe
+C:\Users\Kehinde Aregbesola\Desktop\interview questions and answers\Weather-API\bin\Debug\WeatherAPI.dll
+C:\Users\Kehinde Aregbesola\Desktop\interview questions and answers\Weather-API\bin\Debug\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\Kehinde Aregbesola\Desktop\interview questions and answers\Weather-API\bin\Debug\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\Kehinde Aregbesola\Desktop\interview questions and answers\Weather-API\bin\Debug\Microsoft.IdentityModel.Tokens.dll
+C:\Users\Kehinde Aregbesola\Desktop\interview questions and answers\Weather-API\bin\Debug\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\Kehinde Aregbesola\Desktop\interview questions and answers\Weather-API\bin\Debug\Swashbuckle.AspNetCore.Annotations.dll
+C:\Users\Kehinde Aregbesola\Desktop\interview questions and answers\Weather-API\bin\Debug\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\Kehinde Aregbesola\Desktop\interview questions and answers\Weather-API\bin\Debug\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\Kehinde Aregbesola\Desktop\interview questions and answers\Weather-API\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Kehinde Aregbesola\Desktop\interview questions and answers\Weather-API\bin\Debug\Microsoft.OpenApi.dll
+C:\Users\Kehinde Aregbesola\Desktop\interview questions and answers\Weather-API\bin\Debug\Swashbuckle.AspNetCore.Filters.dll
+C:\Users\Kehinde Aregbesola\Desktop\interview questions and answers\Weather-API\bin\Debug\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Users\Kehinde Aregbesola\Desktop\interview questions and answers\Weather-API\bin\Debug\Microsoft.IdentityModel.Protocols.dll
+C:\Users\Kehinde Aregbesola\Desktop\interview questions and answers\Weather-API\bin\Debug\Microsoft.IdentityModel.Logging.dll
+C:\Users\Kehinde Aregbesola\Desktop\interview questions and answers\Weather-API\bin\Debug\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\Kehinde Aregbesola\Desktop\interview questions and answers\Weather-API\bin\Debug\Swashbuckle.AspNetCore.Filters.Abstractions.dll
+C:\Users\Kehinde Aregbesola\Desktop\interview questions and answers\Weather-API\bin\Debug\Scrutor.dll
+C:\Users\Kehinde Aregbesola\Desktop\interview questions and answers\Weather-API\bin\Debug\Microsoft.IdentityModel.Abstractions.dll
+C:\Users\Kehinde Aregbesola\Desktop\interview questions and answers\Weather-API\bin\Debug\Microsoft.Extensions.DependencyModel.dll
+C:\Users\Kehinde Aregbesola\Desktop\interview questions and answers\Weather-API\bin\Debug\WeatherAPI.pdb
+C:\Users\Kehinde Aregbesola\Desktop\interview questions and answers\Weather-API\obj\Debug\docker-compose.dcproj.AssemblyReference.cache
+C:\Users\Kehinde Aregbesola\Desktop\interview questions and answers\Weather-API\obj\Debug\docker-compose.dcproj.CoreCompileInputs.cache
+C:\Users\Kehinde Aregbesola\Desktop\interview questions and answers\Weather-API\obj\Debug\docker-compose.dcproj.CopyComplete

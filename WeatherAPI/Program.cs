@@ -4,7 +4,6 @@ using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.Filters;
 using System.Text;
 using WeatherAPI.Domain.Core.Service;
-using WeatherAPI.Domain.Model;
 using WeatherAPI.infrastructure.Repository;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -35,8 +34,11 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             ValidateIssuerSigningKey = true,
             IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8
                 .GetBytes(builder.Configuration.GetSection("Jwt:Token").Value)),
-            ValidateIssuer = false,
-            ValidateAudience = false
+            ValidateIssuer = true,
+            ValidateAudience = true,
+            ValidateLifetime = true,
+            ValidIssuer = builder.Configuration.GetSection("Jwt:Issuer").Value,
+            ValidAudience = builder.Configuration.GetSection("Jwt:Audience").Value,
         };
     });
 builder.Services.AddScoped<IWeatherRepository, WeatherRepository>();

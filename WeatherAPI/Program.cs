@@ -57,9 +57,8 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseAuthentication();
-
 app.UseAuthorization();
-
 app.MapControllers();
-
+//Learn more about global exception handling at https://www.youtube.com/watch?v=ct2ydxZ7BjU
+app.UseExceptionHandler("/api/errorhandling");
 app.Run();

@@ -48,8 +48,6 @@
             }
             else
             {
-                var json = await response.Content.ReadAsStringAsync();
-                var result = JsonConvert.DeserializeObject<User>(json);
                 return ResponseDto<WeatherInfoDto>.Fail("Location not found", (int)HttpStatusCode.NotFound);
             }
 

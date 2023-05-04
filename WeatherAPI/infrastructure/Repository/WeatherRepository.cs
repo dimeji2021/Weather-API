@@ -25,23 +25,24 @@
             {
                 return ResponseDto<WeatherInfoDto>.Fail("Location field is required", (int)HttpStatusCode.BadRequest);
             }
-            var response = await _httpClient.GetAsync($"https://api.openweathermap.org/data/2.5/weather?q={location}&appid={_configuration.GetConnectionString("ApiKey")}");
+            var apiKey = _configuration.GetConnectionString("ApiKey");
+            var url = _configuration.GetConnectionString("ApiUrl");
+            var response = await _httpClient.GetAsync($"{url}{location}{apiKey}");
             if (response.IsSuccessStatusCode)
             {
-                var json = await response.Content.ReadAsStringAsync();
-                var weather = JsonConvert.DeserializeObject<root>(json);
+                var weather = await response.Content.ReadFromJsonAsync<WeatherInfo>(); // Rather than above
                 var weatherdto = new WeatherInfoDto()
                 {
-                    lon = weather.coord.lon.ToString(), 
-                    lat = weather.coord.lat.ToString(),
-                    Temperature = weather.main.temp,
-                    Summary = weather.weather[0].main,
-                    Details = weather.weather[0].description,
-                    Pressure = weather.main.pressure.ToString(),
-                    Humidity = weather.main.humidity.ToString(),
-                    Sunrise = ConvertDateTime(weather.sys.sunrise).ToString(),
-                    Sunset = ConvertDateTime(weather.sys.sunset).ToString(),
-                    Icon = $"https://api.openweathermap.org/img/w/{weather.weather[0].icon}.png",
+                    lon = weather.Coord.lon.ToString(),
+                    lat = weather.Coord.lat.ToString(),
+                    Temperature = weather.Main.temp,
+                    Summary = weather.Weather[0].main,
+                    Details = weather.Weather[0].description,
+                    Pressure = weather.Main.pressure.ToString(),
+                    Humidity = weather.Main.humidity.ToString(),
+                    Sunrise = ConvertDateTime(weather.Sys.sunrise).ToString(),
+                    Sunset = ConvertDateTime(weather.Sys.sunset).ToString(),
+                    Icon = $"https://api.openweathermap.org/img/w/{weather.Weather[0].icon}.png",
                 };
                 return ResponseDto<WeatherInfoDto>.Success("Successful", weatherdto, (int)HttpStatusCode.OK);
             }

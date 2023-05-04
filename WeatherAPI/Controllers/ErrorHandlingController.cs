@@ -17,7 +17,7 @@ namespace WeatherAPI.Controllers
             {
                 return Problem(notFoundException.Message, null, 404);
             }
-            return Problem("An error occure");
+            return Problem("An error occured");
         }
     }
 }

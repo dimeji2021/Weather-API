@@ -48,7 +48,7 @@
             }
             else
             {
-                return ResponseDto<WeatherInfoDto>.Fail("Location not found", (int)HttpStatusCode.NotFound);
+                return ResponseDto<WeatherInfoDto>.Fail(response.ReasonPhrase, (int)response.StatusCode);
             }
 
         }
